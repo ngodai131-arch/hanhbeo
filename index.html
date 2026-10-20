@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Dear 💖 20/10</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@600;700;800;900&family=Dancing+Script:wght@600;700&family=Be+Vietnam+Pro:wght@300;400;600&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pink: #ff6fae;
+        --rose: #ff3d84;
+        --gold: #ffd9a8;
+        --text: #fff1f6;
+        --serif: "Lora", "Times New Roman", Georgia, serif;
+        --script: "Dancing Script", "Segoe Script", cursive;
+        --sans: "Be Vietnam Pro", "Montserrat", "Segoe UI", Roboto, sans-serif;
+        box-sizing: border-box;
+      }
+      *, *::before, *::after {
+        box-sizing: inherit;
+      }
+      html,
+      body {
+        height: 100%;
+        height: 100dvh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      body {
+        background: radial-gradient(circle at 50% 35%, #4a1240, #1f041a 75%);
+        color: var(--text);
+        font-family: var(--sans);
+        position: relative;
+        width: 100%;
+        height: 100dvh;
+      }
+      .glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        pointer-events: none;
+        will-change: transform;
+      }
+      .g1 {
+        width: 55vmax;
+        height: 55vmax;
+        background: radial-gradient(circle, #ff2d8a 25%, transparent 70%);
+        left: -15vmax;
+        top: -15vmax;
+      }
+      .g2 {
+        width: 45vmax;
+        height: 45vmax;
+        background: radial-gradient(circle, #8a3dff 25%, transparent 70%);
+        right: -12vmax;
+        bottom: -10vmax;
+      }
+      .star {
+        position: fixed;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #fff;
+        animation: tw 3s infinite alternate;
+        pointer-events: none;
+        z-index: 1;
+        will-change: opacity, transform;
+      }
+      @keyframes tw {
+        from {
+          opacity: 0.15;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 0.95;
+          box-shadow: 0 0 8px #fff;
+          transform: scale(1.3);
+        }
+      }
+
+      /* Hoa nở và trôi lượn bồng bềnh xung quanh */
+      .bloom-flower {
+        position: fixed;
+        pointer-events: none;
+        z-index: 2;
+        user-select: none;
+        will-change: transform, opacity;
+        filter: drop-shadow(0 0 12px rgba(255, 61, 132, 0.65));
+        animation: flowerBloom 1.4s cubic-bezier(0.18, 0.9, 0.32, 1.3) forwards,
+                   flowerSway 6s ease-in-out infinite alternate;
+      }
+      @keyframes flowerBloom {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0) rotate(-45deg);
+          filter: drop-shadow(0 0 20px #fff) brightness(2);
+        }
+        60% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.18) rotate(15deg);
+          filter: drop-shadow(0 0 16px var(--rose)) brightness(1.2);
+        }
+        100% {
+          opacity: var(--target-op, 0.9);
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        }
+      }
+      @keyframes flowerSway {
+        0% {
+          transform: translate(-50%, -50%) translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-50%, -50%) translateY(-12px) rotate(8deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) translateY(8px) rotate(-8deg);
+        }
+      }
+
+      /* Cánh hoa rơi lãng mạn */
+      .petal-fall {
+        position: fixed;
+        top: -50px;
+        pointer-events: none;
+        z-index: 2;
+        will-change: transform, opacity;
+        user-select: none;
+        filter: drop-shadow(0 0 8px rgba(255, 111, 174, 0.5));
+        animation: fallDown linear forwards;
+      }
+      @keyframes fallDown {
+        0% {
+          transform: translate(0, 0) rotate(0deg) scale(0.6);
+          opacity: 0;
+        }
+        12% {
+          opacity: var(--pop, 0.85);
+        }
+        88% {
+          opacity: var(--pop, 0.85);
+        }
+        100% {
+          transform: translate(var(--drift, 50px), 110vh) rotate(var(--spin, 360deg)) scale(1.05);
+          opacity: 0;
+        }
+      }
+
+      /* Hoa bung nở khi chạm/click */
+      .flower-burst {
+        position: fixed;
+        pointer-events: none;
+        z-index: 10;
+        user-select: none;
+        will-change: transform, opacity;
+        animation: burstAnimation 1.1s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+        filter: drop-shadow(0 0 12px rgba(255, 61, 132, 0.8));
+      }
+      @keyframes burstAnimation {
+        0% {
+          transform: translate(-50%, -50%) scale(0) rotate(0deg);
+          opacity: 1;
+        }
+        55% {
+          transform: translate(calc(-50% + var(--bx)), calc(-50% + var(--by))) scale(1.25) rotate(var(--rot));
+          opacity: 0.95;
+        }
+        100% {
+          transform: translate(calc(-50% + var(--bx) * 1.3), calc(-50% + var(--by) * 1.3 + 30px)) scale(0.4) rotate(calc(var(--rot) * 1.5));
+          opacity: 0;
+        }
+      }
+
+      #stage {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.3rem;
+        transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 4;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        padding-top: max(1.5rem, env(safe-area-inset-top, 1.5rem));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+      }
+      #stage.hide {
+        opacity: 0;
+        transform: scale(0.9);
+        pointer-events: none;
+      }
+
+      /* Tiêu đề chính sang trọng với font Lora */
+      .l1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.35em;
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 700;
+        font-size: clamp(2rem, 7.5vw, 4.2rem);
+        letter-spacing: 0.05em;
+        line-height: 1.25;
+        text-align: center;
+        background: linear-gradient(135deg, #ffffff 0%, #ffe2c2 45%, #ff9ec8 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 25px rgba(255, 111, 174, 0.75)) drop-shadow(0 0 50px rgba(255, 61, 132, 0.4));
+        animation: floatTitle 4s ease-in-out infinite alternate;
+      }
+
+      /* Chữ số 20/10 dùng font Montserrat để các số cao bằng nhau 100% */
+      .num {
+        font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(135deg, #ffffff 15%, #ffd9a8 85%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      @keyframes floatTitle {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-8px);
+        }
+      }
+
+      #hint {
+        font-family: var(--script);
+        font-size: clamp(1.6rem, 5vw, 2.1rem);
+        color: var(--gold);
+        text-shadow: 0 0 16px rgba(255, 217, 168, 0.65);
+        animation: pulseHint 2s infinite ease-in-out;
+        margin-top: 0.2rem;
+        padding: 0 1rem;
+      }
+      @keyframes pulseHint {
+        0%, 100% {
+          opacity: 0.9;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+          text-shadow: 0 0 26px rgba(255, 217, 168, 0.95);
+        }
+      }
+
+      #btn,
+      .b2 {
+        padding: 0.95rem 2.6rem;
+        border: 0;
+        border-radius: 99px;
+        font: 600 1.15rem var(--sans);
+        color: #fff;
+        cursor: pointer;
+        background: linear-gradient(135deg, #ff6fae, #ff3d84);
+        box-shadow: 0 0 32px rgba(255, 61, 132, 0.65), 0 0 60px rgba(255, 61, 132, 0.35);
+        transition: transform 0.25s, box-shadow 0.25s;
+        z-index: 5;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        animation: btnPulse 2s infinite ease-in-out;
+        touch-action: manipulation;
+      }
+      #btn:hover,
+      .b2:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 45px rgba(255, 61, 132, 0.9), 0 0 85px rgba(255, 61, 132, 0.5);
+      }
+      @keyframes btnPulse {
+        0%, 100% {
+          box-shadow: 0 0 28px rgba(255, 61, 132, 0.6);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 48px rgba(255, 111, 174, 0.9), 0 0 80px rgba(255, 61, 132, 0.45);
+          transform: scale(1.04);
+        }
+      }
+
+      #card {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1.2rem 1rem;
+        padding-top: max(1.2rem, env(safe-area-inset-top, 1.2rem));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+        z-index: 5;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1s cubic-bezier(0.2, 0.8, 0.25, 1);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #card.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .box {
+        position: relative;
+        margin: 1.2rem auto;
+        max-width: 440px;
+        width: 100%;
+        text-align: center;
+        padding: 1.6rem 1.2rem 1.3rem;
+        border-radius: 12px;
+        color: #51283e;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 247, 251, 0.78)
+        );
+        border: 1px solid rgba(190, 151, 163, 0.3);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        box-shadow:
+          0 25px 90px rgba(63, 13, 44, 0.28),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+        transform: scale(0.88) translateY(25px);
+        transition: transform 1s cubic-bezier(0.2, 1.25, 0.3, 1);
+      }
+      #card.show .box {
+        transform: none;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.3rem 0.9rem;
+        border-radius: 99px;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #4a1240;
+        font-weight: 600;
+        background: linear-gradient(90deg, #ffd9a8, #ffb3d4);
+        box-shadow: 0 0 20px rgba(255, 217, 168, 0.5);
+      }
+      .big {
+        font-size: 2.3rem;
+        margin: 0.4rem 0 0;
+        animation: beat 1.2s infinite;
+      }
+      @keyframes beat {
+        15% {
+          transform: scale(1.25);
+        }
+        30% {
+          transform: scale(1);
+        }
+        45% {
+          transform: scale(1.18);
+        }
+      }
+      .t1 {
+        font-family: var(--script);
+        font-size: 1.35rem;
+        color: #a04c70;
+        margin: 0.2rem 0 0;
+      }
+      .t2 {
+        font-family: 'Lora', var(--serif);
+        font-weight: 700;
+        font-size: clamp(2rem, 8vw, 2.7rem);
+        margin: 0 0 0.3rem;
+        background: linear-gradient(
+          90deg,
+          #a93b6d,
+          #e85d91,
+          #9d456f,
+          #e85d91,
+          #a93b6d
+        );
+        background-size: 250% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: sh 5s linear infinite;
+      }
+      @keyframes sh {
+        to {
+          background-position: -250% 0;
+        }
+      }
+      .orn {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        justify-content: center;
+        color: var(--pink);
+        margin: 0.4rem 0 1rem;
+      }
+      .orn:before,
+      .orn:after {
+        content: "";
+        height: 1px;
+        width: 22%;
+        background: linear-gradient(90deg, transparent, var(--pink));
+      }
+      .orn:after {
+        transform: scaleX(-1);
+      }
+
+      /* Lời chúc: căn giữa, chia dòng cân đối */
+      #msg {
+        color: #563347;
+        font-weight: 400;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        min-height: 6.2em;
+        width: min(100%, 28rem);
+        margin: 0 auto;
+        padding: 0 0.15rem;
+        border: 0;
+        text-align: center;
+        text-wrap: balance;
+        font-family: var(--script);
+        letter-spacing: 0.015em;
+      }
+      .wishes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin: 0.9rem 0;
+      }
+      .w {
+        padding: 0.6rem 0.5rem;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.52);
+        border: 1px solid rgba(192, 105, 143, 0.2);
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        transition: all 0.8s cubic-bezier(0.2, 1.4, 0.3, 1);
+      }
+      .w.on {
+        opacity: 1;
+        transform: none;
+      }
+      .w i {
+        font-style: normal;
+        font-size: 1.25rem;
+        display: block;
+      }
+      .w b {
+        display: block;
+        font-family: 'Lora', serif;
+        font-size: 0.85rem;
+        color: #9d456f;
+        margin: 0.2rem 0;
+      }
+      .w span {
+        font-size: 0.7rem;
+        font-weight: 300;
+        color: #65465a;
+        opacity: 1;
+        line-height: 1.5;
+        display: block;
+      }
+
+      /* Nút Nhận quà */
+      .gift-btn {
+        margin: 0.4rem auto 0;
+        padding: 0.8rem 2.2rem;
+        font-size: 1.05rem;
+      }
+      .gift-btn:disabled {
+        opacity: 0.6;
+        cursor: default;
+        animation: none;
+      }
+      .gift-status {
+        min-height: 1.4em;
+        margin: 0.6rem 0 0;
+        font-size: 0.85rem;
+        color: #9d456f;
+      }
+
+      .meadow {
+        position: relative;
+        height: 118px;
+        margin: 0.6rem auto 0;
+        overflow: hidden;
+        border-radius: 54% 46% 0 0 / 38% 38% 0 0;
+        background: linear-gradient(180deg, rgba(196, 228, 160, 0.12), rgba(96, 154, 86, 0.1));
+      }
+      .meadow::before {
+        content: "";
+        position: absolute;
+        left: -5%;
+        right: -5%;
+        bottom: -8px;
+        height: 76px;
+        border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+        background: linear-gradient(180deg, rgba(130, 195, 95, 0.9), rgba(78, 136, 67, 0.95));
+      }
+      .meadow::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 30px;
+        background: linear-gradient(180deg, rgba(120, 178, 91, 0.2), rgba(73, 118, 61, 0.5));
+      }
+      .meadow-flower {
+        position: absolute;
+        z-index: 1;
+        bottom: 18px;
+        width: 2px;
+        height: var(--stem-height);
+        background: linear-gradient(180deg, #3a7a42, #2d5d38);
+        transform-origin: bottom center;
+        animation: meadowSway 3.5s ease-in-out infinite alternate;
+      }
+      .meadow-flower::before {
+        content: attr(data-flower);
+        position: absolute;
+        left: 50%;
+        top: -1.45rem;
+        font-size: var(--flower-size, 1.5rem);
+        line-height: 1;
+        transform: translateX(-50%);
+        filter: drop-shadow(0 2px 2px rgba(57, 83, 48, 0.2));
+      }
+      .meadow-flower:nth-child(2n) {
+        animation-delay: -1.4s;
+      }
+      .meadow-flower:nth-child(3n) {
+        animation-delay: -2.2s;
+      }
+      @keyframes meadowSway {
+        from { transform: rotate(-5deg); }
+        to { transform: rotate(5deg); }
+      }
+      .heart {
+        position: fixed;
+        bottom: -50px;
+        z-index: 2;
+        pointer-events: none;
+        animation: up linear forwards;
+        filter: drop-shadow(0 0 10px rgba(255, 61, 132, 0.75));
+      }
+      @keyframes up {
+        to {
+          transform: translate(var(--dx), -115vh) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+
+      /* Tối ưu con trỏ chuột riêng cho Desktop (chuột) và Mobile (cảm ứng) */
+      @media (pointer: fine) {
+        * {
+          cursor: none !important;
+        }
+        #cur {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99;
+          pointer-events: none;
+          font-size: 26px;
+          color: #ff3d84;
+          text-shadow:
+            0 0 12px #ff3d84,
+            0 0 28px #ff6fae;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        #cur span {
+          display: inline-block;
+          animation: beat 1.2s infinite;
+        }
+        .trail {
+          position: fixed;
+          z-index: 98;
+          pointer-events: none;
+          color: #ff6fae;
+          transform: translate(-50%, -50%);
+          animation: tr 1.1s ease-out forwards;
+          text-shadow: 0 0 10px rgba(255, 61, 132, 0.85);
+        }
+        @keyframes tr {
+          to {
+            transform: translate(calc(-50% + var(--tx)), -90px) scale(0.35);
+            opacity: 0;
+          }
+        }
+      }
+      @media (pointer: coarse) {
+        #cur, .trail {
+          display: none !important;
+        }
+      }
+
+      /* Tối ưu giao diện chuyên biệt cho màn hình điện thoại (< 480px) */
+      @media (max-width: 480px) {
+        .l1 {
+          font-size: clamp(1.75rem, 8vw, 2.5rem);
+          gap: 0.25em;
+        }
+        #hint {
+          font-size: 1.55rem;
+        }
+        #btn, .b2 {
+          padding: 0.85rem 2.2rem;
+          font-size: 1.05rem;
+        }
+        .box {
+          margin: 0.8rem auto 1.5rem;
+          padding: 1.3rem 0.95rem 1.1rem;
+          border-radius: 22px;
+        }
+        .t2 {
+          font-size: clamp(1.6rem, 7.5vw, 2.2rem);
+        }
+        .wishes {
+          gap: 0.4rem;
+        }
+        .w {
+          padding: 0.55rem 0.4rem;
+        }
+        .w b {
+          font-size: 0.8rem;
+        }
+        .w span {
+          font-size: 0.66rem;
+        }
+        #msg {
+          font-size: 0.88rem;
+          line-height: 1.65;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+
+    <div id="stage">
+      <div class="l1" id="l1">
+        <span>CHÚC MỪNG</span>
+        <span class="num">20/10</span>
+      </div>
+      <div id="hint">Hạnh</div>
+      <button id="btn">Mở 💌</button>
+    </div>
+
+    <div id="card">
+      <div class="box">
+        <span class="badge">20 · 10 &nbsp;Ngày Phụ nữ Việt Nam</span>
+        <div class="big">🌹</div>
+        <p class="t1">Gửi riêng cho</p>
+        <h1 class="t2" id="name">Hạnh 💖</h1>
+        <div class="orn">✦ ✦ ✦</div>
+        <div id="msg"></div>
+        <div class="wishes" id="wishes"></div>
+
+        <button id="giftBtn" class="b2 gift-btn">🎁 Nhận quà</button>
+        <p id="giftStatus" class="gift-status"></p>
+
+        <div class="meadow" role="img" aria-label="Những bông hoa nhỏ trên bãi cỏ xanh">
+          <span class="meadow-flower" data-flower="🌼" style="left: 12%; --stem-height: 34px; --flower-size: 1.3rem"></span>
+          <span class="meadow-flower" data-flower="🌷" style="left: 29%; --stem-height: 46px; --flower-size: 1.55rem"></span>
+          <span class="meadow-flower" data-flower="🌸" style="left: 48%; --stem-height: 38px; --flower-size: 1.4rem"></span>
+          <span class="meadow-flower" data-flower="🌼" style="left: 67%; --stem-height: 48px; --flower-size: 1.6rem"></span>
+          <span class="meadow-flower" data-flower="🌷" style="left: 84%; --stem-height: 34px; --flower-size: 1.25rem"></span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const CFG = {
+        name: "Hạnh 💖",
+        intro:
+          "Nhân ngày 20/10, chúc Hạnh luôn xinh đẹp và ngầu như skibidi. Mong mỗi ngày Hạnh không phải buồn. Mong cô luôn hạnh phúc và vui mỗi ngày 🌸",
+        wishes: [
+          ["🌸", "Luôn xinh đẹp", "Rạng rỡ từ nụ cười đến trái tim."],
+          ["💖", "Thật hạnh phúc", "Mỗi ngày đều có một niềm vui nhỏ."],
+          ["✨", "Bình yên", "Nhẹ nhàng giữa mọi bộn bề."],
+          ["🌹", "Được yêu thương", "Nhiều hơn nữa ."],
+        ],
+        // Access Key của Web3Forms (mail sẽ gửi về ngodai131@gmail.com)
+        web3formsKey: "0a95e56d-808e-40b3-9671-a577eacc47b9",
+      };
+
+      const FLOWERS = ["🌹", "🌸", "🌷", "🌺", "🪷", "💮", "💐", "💖"];
+      const PETALS = ["🌸", "🌹", "🌷", "🍃", "✨"];
+      const HEARTS = ["❤", "💖", "💗", "💕", "💘", "🌸", "🌹", "💝"];
+
+      const rnd = (a) =>
+        Array.isArray(a) || typeof a === "string"
+          ? a[Math.floor(Math.random() * a.length)]
+          : 0;
+      const R = (a, b) => Math.random() * (b - a) + a;
+      const $ = (id) => document.getElementById(id);
+
+      // Nhận diện thiết bị di động hay máy tính
+      const isTouch = window.matchMedia("(pointer: coarse)").matches || 'ontouchstart' in window;
+      const isMobile = isTouch || window.innerWidth <= 768;
+
+      // Tối ưu số lượng phần tử theo thiết bị (mượt mà 60fps trên cả điện thoại cấu hình yếu)
+      const STAR_COUNT = isMobile ? 32 : 55;
+      const MAX_AMBIENT_FLOWERS = isMobile ? 10 : 16;
+      const PETAL_INTERVAL = isMobile ? 650 : 450;
+
+      // Tạo các vì sao lấp lánh ở nền
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const s = document.createElement("div");
+        s.className = "star";
+        s.style.cssText = `left:${R(0, 100)}vw;top:${R(0, 100)}vh;animation-delay:${R(0, 3)}s`;
+        document.body.appendChild(s);
+      }
+
+      // Khởi tạo nội dung thiệp
+      $("name").textContent = CFG.name;
+      $("wishes").innerHTML = CFG.wishes
+        .map(
+          (w) =>
+            `<div class="w"><i>${w[0]}</i><b>${w[1]}</b><span>${w[2]}</span></div>`,
+        )
+        .join("");
+
+      // Quản lý các bông hoa nở xung quanh viền màn hình (tránh che khuất chữ ở giữa)
+      const ambientFlowers = [];
+
+      function getFramePosition() {
+        const side = Math.floor(Math.random() * 4);
+        let x, y;
+        if (side === 0) { // Phía trên
+          x = R(6, 94);
+          y = R(6, 22);
+        } else if (side === 1) { // Phía dưới
+          x = R(6, 94);
+          y = R(78, 94);
+        } else if (side === 2) { // Phía bên trái
+          x = R(4, 22);
+          y = R(24, 76);
+        } else { // Phía bên phải
+          x = R(78, 96);
+          y = R(24, 76);
+        }
+        return { x, y };
+      }
+
+      function spawnBloomFlower() {
+        const el = document.createElement("div");
+        el.className = "bloom-flower";
+        el.textContent = rnd(FLOWERS);
+
+        const size = isMobile ? R(22, 42) : R(26, 56);
+        const pos = getFramePosition();
+        const op = R(0.68, 0.95);
+        const swayDuration = R(4.5, 7.5);
+
+        el.style.left = pos.x + "vw";
+        el.style.top = pos.y + "vh";
+        el.style.fontSize = size + "px";
+        el.style.setProperty("--target-op", op);
+        el.style.animationDuration = `1.4s, ${swayDuration}s`;
+        el.style.animationDelay = `0s, ${R(0, 2)}s`;
+
+        document.body.appendChild(el);
+        ambientFlowers.push(el);
+
+        const life = R(8000, 15000);
+        setTimeout(() => {
+          el.style.transition = "opacity 1.5s, transform 1.5s";
+          el.style.opacity = "0";
+          el.style.transform = "translate(-50%, -50%) scale(0.2)";
+          setTimeout(() => {
+            el.remove();
+            const idx = ambientFlowers.indexOf(el);
+            if (idx > -1) ambientFlowers.splice(idx, 1);
+            if (ambientFlowers.length < MAX_AMBIENT_FLOWERS) {
+              spawnBloomFlower();
+            }
+          }, 1500);
+        }, life);
+      }
+
+      for (let i = 0; i < MAX_AMBIENT_FLOWERS; i++) {
+        setTimeout(spawnBloomFlower, i * 220);
+      }
+
+      // Cánh hoa rơi bồng bềnh
+      function spawnFallingPetal() {
+        const p = document.createElement("div");
+        p.className = "petal-fall";
+        p.textContent = rnd(PETALS);
+        const size = isMobile ? R(12, 22) : R(14, 28);
+        const duration = R(7, 13);
+        const drift = R(-80, 100);
+        const spin = R(240, 720) * (Math.random() < 0.5 ? -1 : 1);
+        const pop = R(0.55, 0.88);
+
+        p.style.left = R(-5, 105) + "vw";
+        p.style.fontSize = size + "px";
+        p.style.setProperty("--drift", drift + "px");
+        p.style.setProperty("--spin", spin + "deg");
+        p.style.setProperty("--pop", pop);
+        p.style.animationDuration = duration + "s";
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), duration * 1000);
+      }
+      setInterval(spawnFallingPetal, PETAL_INTERVAL);
+
+      // Hiệu ứng hoa bung nở tại tọa độ (x, y)
+      function bloomBurst(x, y, count = 5) {
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement("div");
+          el.className = "flower-burst";
+          el.textContent = rnd(FLOWERS);
+          const angle = R(0, Math.PI * 2);
+          const dist = isMobile ? R(30, 95) : R(40, 140);
+          const bx = Math.cos(angle) * dist;
+          const by = Math.sin(angle) * dist;
+          const rot = R(-180, 180);
+          const size = isMobile ? R(16, 32) : R(18, 42);
+
+          el.style.left = x + "px";
+          el.style.top = y + "px";
+          el.style.fontSize = size + "px";
+          el.style.setProperty("--bx", bx + "px");
+          el.style.setProperty("--by", by + "px");
+          el.style.setProperty("--rot", rot + "deg");
+
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 1100);
+        }
+      }
+
+      // Tim bay lên
+      function heart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.textContent = rnd(HEARTS);
+        const d = R(5, 11);
+        const size = isMobile ? R(14, 34) : R(16, 44);
+        h.style.cssText = `left:${R(0, 100)}vw;font-size:${size}px;animation-duration:${d}s;--dx:${R(-80, 80)}px;--rot:${R(-40, 40)}deg;opacity:${R(0.6, 1)}`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), d * 1000);
+      }
+
+      // Bão hoa & tim khi mở thiệp
+      function flowerStorm() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const bursts = isMobile ? 6 : 9;
+        const hearts = isMobile ? 24 : 35;
+
+        for (let i = 0; i < bursts; i++) {
+          setTimeout(() => {
+            bloomBurst(R(w * 0.15, w * 0.85), R(h * 0.15, h * 0.85), isMobile ? 5 : 7);
+          }, i * 140);
+        }
+        for (let i = 0; i < hearts; i++) {
+          setTimeout(heart, i * 65);
+        }
+        for (let i = 0; i < 12; i++) {
+          setTimeout(spawnFallingPetal, i * 80);
+        }
+      }
+
+      // Mở thiệp
+      let opened = false;
+      function openCard() {
+        if (opened) return;
+        opened = true;
+        flowerStorm();
+        $("btn").style.transform = "scale(0.85)";
+        $("btn").style.opacity = "0.5";
+
+        setTimeout(() => {
+          $("stage").classList.add("hide");
+          $("card").classList.add("show");
+          setInterval(heart, isMobile ? 450 : 350);
+
+          // Hiện luôn toàn bộ lời chúc, không chạy chữ
+          $("msg").textContent = CFG.intro;
+          document
+            .querySelectorAll(".w")
+            .forEach((w, k) =>
+              setTimeout(() => w.classList.add("on"), 300 + k * 200),
+            );
+        }, 550);
+      }
+
+      $("btn").onclick = (e) => {
+        e.stopPropagation();
+        openCard();
+      };
+
+      // Nút Nhận quà: gửi mail về Gmail (qua Web3Forms)
+      $("giftBtn").onclick = async (e) => {
+        e.stopPropagation();
+        const btn = $("giftBtn");
+        const status = $("giftStatus");
+        btn.disabled = true;
+        status.textContent = "Đang gửi... 💌";
+
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              access_key: CFG.web3formsKey,
+              subject: "🎁 Hạnh vừa bấm Nhận quà 20/10!",
+              from_name: "Thiệp 20/10",
+              message:
+                "Hạnh đã bấm nút Nhận quà trên thiệp 20/10. Lúc: " +
+                new Date().toLocaleString("vi-VN"),
+            }),
+          });
+          const data = await res.json();
+          console.log("Web3Forms:", res.status, data);
+          if (!data.success) throw new Error(data.message || "Gửi thất bại");
+
+          btn.textContent = "Đã gửi 💖";
+          status.textContent = "Quà sẽ đến với bạn sớm thôi nhé! 🌹";
+          flowerStorm();
+        } catch (err) {
+          console.error(err);
+          btn.disabled = false;
+          status.textContent = "Lỗi: " + err.message;
+        }
+      };
+
+      // Tương tác chạm/click trên toàn màn hình
+      window.addEventListener("pointerdown", (e) => {
+        if (e.target.closest("#btn") || e.target.tagName === "BUTTON") return;
+        bloomBurst(e.clientX, e.clientY, isMobile ? 4 : 6);
+      });
+
+      // Nhấn Space để mở hoặc thả thêm hoa & tim (dành cho máy tính)
+      addEventListener("keydown", (e) => {
+        if (e.code === "Space") {
+          e.preventDefault();
+          if (!opened) openCard();
+          else flowerStorm();
+        }
+      });
+
+      // Con trỏ chuột hoa hồng trên Desktop
+      if (!isTouch) {
+        const cur = document.createElement("div");
+        cur.id = "cur";
+        cur.innerHTML = "<span>🌹</span>";
+        document.body.appendChild(cur);
+        let lt = 0;
+        addEventListener("pointermove", (e) => {
+          cur.style.transform = `translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
+          cur.style.opacity = 1;
+          const n = performance.now();
+          if (n - lt < 45) return;
+          lt = n;
+          const t = document.createElement("div");
+          t.className = "trail";
+          t.textContent = rnd(["🌸", "✨", "💕", "🌹"]);
+          t.style.cssText += `left:${e.clientX}px;top:${e.clientY}px;font-size:${R(12, 22)}px;--tx:${R(-30, 30)}px`;
+          document.body.appendChild(t);
+          setTimeout(() => t.remove(), 1100);
+        });
+        document.addEventListener("mouseleave", () => (cur.style.opacity = 0));
+      }
+    </script>
+  </body>
+</html>
